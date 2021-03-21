@@ -8,7 +8,11 @@ dotenv.config()
 const market = process.env.MARKET_SYSTEM
 
 const getProducts = async(request, response) => {
-  const data = await fetch(`${ market }/products?ids=${request.query.ids}`)
+  const url = `${ market }/products?ids=${request.query.ids}`;
+  
+  console.log(url);
+
+  const data = await fetch(url)
     .then(result => result.json())
 
   response
