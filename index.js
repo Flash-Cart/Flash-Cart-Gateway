@@ -12,12 +12,17 @@ const getProducts = async(request, response) => {
   
   console.log(url);
 
-  const data = await fetch(url)
-    .then(result => result.json())
+  try {
+    const data = await fetch(url)
+    const text = await data.text()
+    console.log(text)
+  } catch (e) {
+    console.log(e);
+  }
 
   response
     .status(200)
-    .json(data)
+    .json({})
 }
 
 const port = process.env.PORT
